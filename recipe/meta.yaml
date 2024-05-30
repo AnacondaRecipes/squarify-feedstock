@@ -10,16 +10,20 @@ source:
   sha256: 54091f6ad175f7f201f8934574e647ce1b50dedc478c5fd968688eb7d7469f95
 
 build:
-  noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  skip: true # [py>=36]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python >=2.6,<=2.7|>=3.5
+    - python
     - pip
+    - setuptools
+    - wheel
   run:
-    - python >=2.6,<=2.7|>=3.5
+    - python
+    # Note this isn't explicitly called out in setup.py but matplotlib is imported
+    # https://github.com/laserson/squarify/blob/42e332c9c69146fcb3bda44c1d3cc3009955327c/squarify/__init__.py#L222
     - matplotlib-base
 
 test:
