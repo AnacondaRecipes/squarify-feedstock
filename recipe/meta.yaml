@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  skip: true # [py<=38 or py>312]
+  skip: true # [py<=38]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vvv
 
 requirements:
@@ -28,7 +28,7 @@ requirements:
 
 test:
   source_files:
-    tests
+    - tests
   imports:
     - squarify
   requires:
