@@ -1,5 +1,5 @@
 {% set name = "squarify" %}
-{% set version = "0.4.4" %}
+{% set version = "0.4.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b8a110c8dc5f1cd1402ca12d79764a081e90bfc445346cfa166df929753ecb46
+  sha256: 733c9ef74cee369a83d61a050aea0812f182f0216d9b2bde76691c87443f6883
 
 build:
   number: 0
-  skip: true # [py<=38]
+  skip: true  # [py<=38]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vvv
 
 requirements:
